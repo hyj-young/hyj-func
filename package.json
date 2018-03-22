@@ -1,0 +1,22 @@
+{
+  "name": "hyj-func",
+  "version": "1.1.1",
+  "main": "dist/hyj-func.js",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "heyunjiang",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11",
+    "webpack-merge": "^4.1.2"
+  }
+}
