@@ -97,7 +97,32 @@ const urlGetParamsForObject = (url) => {
 	})
 	return obj
 }
+
+/*
+ * 3. url 需要下载文件的url
+ * 实现功能：传入url，实现文件下载
+ * @requires url 原始url
+ */
+const downloadFileForUrl = (url) => {
+	if (typeof(url) !== 'string') {
+		return ;
+	}
+	if(!!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)&&document.body.clientWidth < 769){
+		window.location.href = url
+	}
+	let tempLink = document.createElement('a');
+	tempLink.style.display = 'none';
+	tempLink.href = url;
+	tempLink.setAttribute('download', '');
+	if (typeof tempLink.download === 'undefined') {
+		tempLink.setAttribute('target', '_blank');
+	}
+	document.body.appendChild(tempLink);
+	tempLink.click();
+	document.body.removeChild(tempLink);
+}
 module.exports = {
 	objectInArraySort,
 	urlGetParamsForObject,
+	downloadFileForUrl
 }

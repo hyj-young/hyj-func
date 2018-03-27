@@ -39,3 +39,18 @@ import { urlGetParamsForObject } from hyj-func
 
 urlGetParamsForObject(url)
 ```
+
+3. 文件下载
+
+使用方式
+
+```javascript
+/*
+ * 实现功能：传入url，文件下载
+ * @requires url 原始url
+ */
+
+import { downloadFileForUrl } from hyj-func
+
+downloadFileForUrl(url)
+```
