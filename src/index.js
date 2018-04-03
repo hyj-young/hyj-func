@@ -3,6 +3,83 @@
  * designer：何运江
  * start at: 2018.3.8
  */
+
+const toString = Object.prototype.toString
+const _isFunction = (obj) => {
+	return toString.call(obj) === '[object Function]'
+}
+const _deepEq = (a, b, aStack, bStack) => {
+	var className = toString.call(a);
+    if (className !== toString.call(b)) return false;
+
+    switch (className) {
+        case '[object RegExp]':
+        case '[object String]':
+            return '' + a === '' + b;
+        case '[object Number]':
+            if (+a !== +a) return +b !== +b;
+            return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+        case '[object Date]':
+        case '[object Boolean]':
+            return +a === +b;
+    }
+
+    var areArrays = className === '[object Array]';
+    if (!areArrays) {
+        // 过滤掉两个函数的情况
+        if (typeof a != 'object' || typeof b != 'object') return false;
+
+        var aCtor = a.constructor,
+            bCtor = b.constructor;
+        // aCtor 和 bCtor 必须都存在并且都不是 Object 构造函数的情况下，aCtor 不等于 bCtor， 那这两个对象就真的不相等啦
+        if (aCtor !== bCtor && !(isFunction(aCtor) && aCtor instanceof aCtor && isFunction(bCtor) && bCtor instanceof bCtor) && ('constructor' in a && 'constructor' in b)) {
+            return false;
+        }
+    }
+
+    aStack = aStack || [];
+    bStack = bStack || [];
+    var length = aStack.length;
+    
+    // 检查是否有循环引用的部分
+    while (length--) {
+        if (aStack[length] === a) {
+            return bStack[length] === b;
+        }
+    }
+
+    aStack.push(a);
+    bStack.push(b);
+
+    // 数组判断
+    if (areArrays) {
+
+        length = a.length;
+        if (length !== b.length) return false;
+
+        while (length--) {
+            if (!objectEquals(a[length], b[length], aStack, bStack)) return false;
+        }
+    }
+    // 对象判断
+    else {
+
+        var keys = Object.keys(a),
+            key;
+        length = keys.length;
+
+        if (Object.keys(b).length !== length) return false;
+        while (length--) {
+
+            key = keys[length];
+            if (!(b.hasOwnProperty(key) && objectEquals(a[key], b[key], aStack, bStack))) return false;
+        }
+    }
+
+    aStack.pop();
+    bStack.pop();
+    return true;
+}
 /*
  * 1. 对象数组按日期降序排序
  * 实现功能：传入对象数组，对象相同年月组成集合数组，每个集合数组内部按照日、时分秒排序
@@ -99,7 +176,7 @@ const urlGetParamsForObject = (url) => {
 }
 
 /*
- * 3. url 需要下载文件的url
+ * 3. 文件下载
  * 实现功能：传入url，实现文件下载
  * @requires url 原始url
  */
@@ -121,8 +198,26 @@ const downloadFileForUrl = (url) => {
 	tempLink.click();
 	document.body.removeChild(tempLink);
 }
+
+/*
+ * 4. 对象判等
+ * 实现功能：传入2个对象，判断是否key-value相同
+ * @requires a, b
+ * 注意: 忽略NAN、undefined
+ * from: https://github.com/mqyqingfeng/Blog/issues/41
+ * on: 2018.4.3
+ */
+const objectEquals = (a, b, aStack, bStack) => {
+	if (a === b) return a !== 0 || 1 / a === 1 / b;// === 结果为 true 的区别出 +0 和 -0
+	if (a == null || b == null) return false;// typeof null 的结果为 object
+	if (a !== a) return b !== b;// 判断 NaN
+	var type = typeof a;
+    if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
+    return _deepEq(a, b, aStack, bStack);
+}
 module.exports = {
 	objectInArraySort,
 	urlGetParamsForObject,
-	downloadFileForUrl
+	downloadFileForUrl,
+	objectEquals
 }

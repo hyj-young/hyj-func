@@ -54,3 +54,20 @@ import { downloadFileForUrl } from hyj-func
 
 downloadFileForUrl(url)
 ```
+
+4. 对象判等
+
+使用方式
+
+```javascript
+/*
+ * 实现功能：传入2个对象，判断是否key-value相同
+ * @requires a, b
+ * 注意: 忽略NAN、undefined
+ * from: https://github.com/mqyqingfeng/Blog/issues/41
+ */
+
+import { objectEquals } from hyj-func
+
+objectEquals(obj1, obj2)
+```
