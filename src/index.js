@@ -215,9 +215,34 @@ const objectEquals = (a, b, aStack, bStack) => {
     if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
     return _deepEq(a, b, aStack, bStack);
 }
+
+/*
+ * 5. 获取起始时间
+ * @require type latestWeek latestMonth latestThreeMonthes lastYear lastThreeYears
+ * @return obj startTime endTime
+ * @example {startTime: '2018.4.6', endTime: '2018.4.13'}
+ * on: 2018.4.13
+ */
+const getTimeSection = (type) => {
+	const obj = {}
+	let startTime = new Date(), now = new Date()
+	if (typeof(type) !== 'string') {return obj}
+	switch(type) {
+		case 'latestWeek': startTime.setDate(startTime.getDate()-7);break;
+		case 'latestMonth': startTime.setMonth(startTime.getMonth()-1);break;
+		case 'latestWeek': startTime.setMonth(startTime.getMonth()-3);break;
+		case 'lastYear': startTime.setYear(startTime.getFullYear()-1);break;
+		case 'lastThreeYears': startTime.setYear(startTime.getFullYear()-3);break;
+	}
+	return {
+		startTime: startTime.getFullYear() + '.' + startTime.getMonth() + '.'  + startTime.getDate(),
+		endTime: now.getFullYear() + '.' + now.getMonth() + '.'  + now.getDate()
+	}
+}
 module.exports = {
 	objectInArraySort,
 	urlGetParamsForObject,
 	downloadFileForUrl,
-	objectEquals
+	objectEquals,
+	getTimeSection
 }

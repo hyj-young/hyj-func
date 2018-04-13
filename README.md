@@ -71,3 +71,22 @@ import { objectEquals } from hyj-func
 
 objectEquals(obj1, obj2)
 ```
+
+5. 日期区间获取
+
+使用方式
+
+```javascript
+/*
+ * 获取起始时间
+ * 实现功能：传入字符串，返回时间区间
+ * @require type latestWeek latestMonth latestThreeMonthes lastYear lastThreeYears
+ * @return obj startTime endTime
+ * @example {startTime: '2018.4.6', endTime: '2018.4.13'}
+ * on: 2018.4.13
+ */
+
+import { getTimeSection } from hyj-func
+
+getTimeSection('latestWeek')
+```
