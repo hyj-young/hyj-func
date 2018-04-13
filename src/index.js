@@ -244,7 +244,7 @@ const getTimeSection = (type) => {
 	switch(type) {
 		case 'latestWeek': startTime.setDate(startTime.getDate()-7);break;
 		case 'latestMonth': startTime.setMonth(startTime.getMonth()-1);break;
-		case 'latestWeek': startTime.setMonth(startTime.getMonth()-3);break;
+		case 'latestThreeMonthes': startTime.setMonth(startTime.getMonth()-3);break;
 		case 'lastYear': startTime.setYear(startTime.getFullYear()-1);break;
 		case 'lastThreeYears': startTime.setYear(startTime.getFullYear()-3);break;
 	}
