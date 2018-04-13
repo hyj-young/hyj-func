@@ -220,11 +220,25 @@ const objectEquals = (a, b, aStack, bStack) => {
  * 5. 获取起始时间
  * @require type latestWeek latestMonth latestThreeMonthes lastYear lastThreeYears
  * @return obj startTime endTime
- * @example {startTime: '2018.4.6', endTime: '2018.4.13'}
+ * @example {startTime: '2018-04-6', endTime: '2018-04-13'}
  * on: 2018.4.13
  */
 const getTimeSection = (type) => {
 	const obj = {}
+	const change = {
+		0: '01',
+		1: '02',
+		2: '03',
+		3: '04',
+		4: '05',
+		5: '06',
+		6: '07',
+		7: '08',
+		8: '09',
+		9: '10',
+		10: '11',
+		11: '12',
+	}
 	let startTime = new Date(), now = new Date()
 	if (typeof(type) !== 'string') {return obj}
 	switch(type) {
@@ -235,8 +249,8 @@ const getTimeSection = (type) => {
 		case 'lastThreeYears': startTime.setYear(startTime.getFullYear()-3);break;
 	}
 	return {
-		startTime: startTime.getFullYear() + '.' + startTime.getMonth() + '.'  + startTime.getDate(),
-		endTime: now.getFullYear() + '.' + now.getMonth() + '.'  + now.getDate()
+		startTime: startTime.getFullYear() + '-' + change[startTime.getMonth()] + '-'  + startTime.getDate(),
+		endTime: now.getFullYear() + '-' + change[now.getMonth()] + '-'  + now.getDate()
 	}
 }
 module.exports = {

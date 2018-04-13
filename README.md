@@ -82,7 +82,7 @@ objectEquals(obj1, obj2)
  * 实现功能：传入字符串，返回时间区间
  * @require type latestWeek latestMonth latestThreeMonthes lastYear lastThreeYears
  * @return obj startTime endTime
- * @example {startTime: '2018.4.6', endTime: '2018.4.13'}
+ * @example {startTime: '2018-04-6', endTime: '2018-04-13'}
  * on: 2018.4.13
  */
 
