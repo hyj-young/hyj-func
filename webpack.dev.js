@@ -14,5 +14,6 @@
  	plugins: common.plugins.concat([
  		new webpack.NamedModulesPlugin(),
     	new webpack.HotModuleReplacementPlugin()
- 	])
+ 	]),
+ 	mode: 'development'
  });

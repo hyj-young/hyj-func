@@ -253,10 +253,14 @@ const getTimeSection = (type) => {
 		endTime: now.getFullYear() + '-' + change[now.getMonth()] + '-'  + now.getDate()
 	}
 }
+
+import {hocArrayVerify} from './hoc'
+
 module.exports = {
 	objectInArraySort,
 	urlGetParamsForObject,
 	downloadFileForUrl,
 	objectEquals,
-	getTimeSection
+	getTimeSection,
+	hocArrayVerify
 }
