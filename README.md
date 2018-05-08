@@ -6,7 +6,7 @@
 
 ## 功能
 
-1. 对象数组按日期降序排序
+1 对象数组按日期降序排序
 
 使用方式
 
@@ -24,7 +24,7 @@ import { objectInArraySort } from hyj-func
 objectInArraySort(arr,'time')
 ```
 
-2. url 参数截取
+2 url 参数截取
 
 使用方式
 
@@ -40,7 +40,7 @@ import { urlGetParamsForObject } from hyj-func
 urlGetParamsForObject(url)
 ```
 
-3. 文件下载
+3 文件下载
 
 使用方式
 
@@ -55,7 +55,7 @@ import { downloadFileForUrl } from hyj-func
 downloadFileForUrl(url)
 ```
 
-4. 对象判等
+4 对象判等
 
 使用方式
 
@@ -72,7 +72,7 @@ import { objectEquals } from hyj-func
 objectEquals(obj1, obj2)
 ```
 
-5. 日期区间获取
+5 日期区间获取
 
 使用方式
 
@@ -89,4 +89,22 @@ objectEquals(obj1, obj2)
 import { getTimeSection } from hyj-func
 
 getTimeSection('latestWeek')
+```
+
+6 HOC-数组参数验证
+
+使用方式
+
+```javascript
+/*
+ * HOC-arrayVerify
+ * 数组参数验证高阶函数
+ * @require func 需要修饰的函数
+ * designer: heyunjiang
+ * time: 2018.5.8
+ */
+
+import { hocArrayVerify } from hyj-func
+
+hocArrayVerify(func)
 ```
