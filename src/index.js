@@ -254,6 +254,28 @@ const getTimeSection = (type) => {
 	}
 }
 
+/*
+ * 6. react数据去重
+ * 去掉具有相同key的重复值
+ * @require arr
+ * @return arrPre 已经去重的数组
+ * on: 2018.5.5
+ */
+const arrayDuplicateRemoval = (arr) => {
+	let existKey = [], arrPreSet = []
+	try {
+		arr.forEach(item=>{
+			if(existKey.indexOf(item.key) === -1) {
+				arrPreSet.push(item)
+				existKey.push(item.key)
+			}
+		})
+	} catch(e) {
+		console.error(e)
+	}
+	return arrPreSet
+}
+
 import {hocArrayVerify} from './hoc'
 
 module.exports = {
@@ -262,5 +284,6 @@ module.exports = {
 	downloadFileForUrl,
 	objectEquals,
 	getTimeSection,
-	hocArrayVerify
+	hocArrayVerify,
+	arrayDuplicateRemoval: hocArrayVerify(arrayDuplicateRemoval)
 }
