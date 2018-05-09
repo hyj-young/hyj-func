@@ -259,7 +259,7 @@ const getTimeSection = (type) => {
  * 去掉具有相同key的重复值
  * @require arr
  * @return arrPre 已经去重的数组
- * on: 2018.5.5
+ * on: 2018.5.9
  */
 const arrayDuplicateRemoval = (arr) => {
 	let existKey = [], arrPreSet = []

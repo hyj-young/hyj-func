@@ -108,3 +108,21 @@ import { hocArrayVerify } from hyj-func
 
 hocArrayVerify(func)
 ```
+
+7 react数据去重
+
+使用方式
+
+```javascript
+/*
+ * react数据去重
+ * 去掉具有相同key的重复值
+ * @require arr
+ * @return arrPre 已经去重的数组
+ * on: 2018.5.9
+ */
+
+import { arrayDuplicateRemoval } from hyj-func
+
+arrayDuplicateRemoval(arr)
+```
