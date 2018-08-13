@@ -80,6 +80,12 @@ const _deepEq = (a, b, aStack, bStack) => {
     bStack.pop();
     return true;
 }
+// 日期格式规范 1->01, 2->02, 10->10, 12->12
+const dateDayFormat = (number) => {
+	number = +number;
+	return number<10?0+''+number:''+number
+}
+
 /*
  * 1. 对象数组按日期降序排序
  * 实现功能：传入对象数组，对象相同年月组成集合数组，每个集合数组内部按照日、时分秒排序
@@ -249,8 +255,8 @@ const getTimeSection = (type) => {
 		case 'lastThreeYears': startTime.setYear(startTime.getFullYear()-3);break;
 	}
 	return {
-		startTime: startTime.getFullYear() + '-' + change[startTime.getMonth()] + '-'  + startTime.getDate(),
-		endTime: now.getFullYear() + '-' + change[now.getMonth()] + '-'  + now.getDate()
+		startTime: startTime.getFullYear() + '-' + change[startTime.getMonth()] + '-'  + dateDayFormat(startTime.getDate()),
+		endTime: now.getFullYear() + '-' + change[now.getMonth()] + '-'  + dateDayFormat(now.getDate())
 	}
 }
 

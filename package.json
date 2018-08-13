@@ -1,6 +1,6 @@
 {
   "name": "hyj-func",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "main": "dist/hyj-func.js",
   "description": "",
   "scripts": {
