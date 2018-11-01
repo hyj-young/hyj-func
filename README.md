@@ -19,7 +19,7 @@
  * @return falseObject 传入不合规则参数，返回falseObject
  */
 
-import { objectInArraySort } from hyj-func
+import { objectInArraySort } from 'hyj-func'
 
 objectInArraySort(arr,'time')
 ```
@@ -35,7 +35,7 @@ objectInArraySort(arr,'time')
  * @return {} 返回参数对象集合
  */
 
-import { urlGetParamsForObject } from hyj-func
+import { urlGetParamsForObject } from 'hyj-func'
 
 urlGetParamsForObject(url)
 ```
@@ -50,7 +50,7 @@ urlGetParamsForObject(url)
  * @requires url 原始url
  */
 
-import { downloadFileForUrl } from hyj-func
+import { downloadFileForUrl } from 'hyj-func'
 
 downloadFileForUrl(url)
 ```
@@ -67,7 +67,7 @@ downloadFileForUrl(url)
  * from: https://github.com/mqyqingfeng/Blog/issues/41
  */
 
-import { objectEquals } from hyj-func
+import { objectEquals } from 'hyj-func'
 
 objectEquals(obj1, obj2)
 ```
@@ -86,7 +86,7 @@ objectEquals(obj1, obj2)
  * on: 2018.4.13
  */
 
-import { getTimeSection } from hyj-func
+import { getTimeSection } from 'hyj-func'
 
 getTimeSection('latestWeek')
 ```
@@ -104,7 +104,7 @@ getTimeSection('latestWeek')
  * time: 2018.5.8
  */
 
-import { hocArrayVerify } from hyj-func
+import { hocArrayVerify } from 'hyj-func'
 
 hocArrayVerify(func)
 ```
@@ -122,7 +122,7 @@ hocArrayVerify(func)
  * on: 2018.5.9
  */
 
-import { arrayDuplicateRemoval } from hyj-func
+import { arrayDuplicateRemoval } from 'hyj-func'
 
 arrayDuplicateRemoval(arr)
 ```
